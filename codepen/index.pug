@@ -1,0 +1,108 @@
+//- Hi there! :)
+    Thank you for checking out my code!
+
+    Had to switch to raw HTML at some point cause
+    I ran out of data because I was making too many requests
+    on CodePen, meaning the code here is incomplete.
+
+    Check the root folder for the main HTML Code. Thank you. <3
+
+main
+	header
+		a.logo(href="/")
+			img(
+				src="https://i.ibb.co/YXgk45f/Disney-logo-compressed.png",
+				alt="disney logo"
+			)
+		nav
+			ul.nav__links
+				li: a(href="#") Home
+				li: a(href="#") Episode
+				li: a(href="#") Cast
+				li: a(href="#") Plot
+				li: a(href="#") Disney Club
+		a.cta(href="#") Create Account
+		p.menu.cta Menu
+	#mobile__menu.overlay
+		a.close &times;
+		.overlay__content
+			a(href="#") Home
+			a(href="#") Episode
+			a(href="#") Cast
+			a(href="#") Plot
+			a(href="#") Disney Club
+	//- Animated background 	
+	.stars-wrapper
+		- for (var s = 0; s < 3; ++s)
+			svg.stars(width="100%", height="100%", preserveAspectRatio="none")
+				- for (var i = 0; i < 300; ++i)
+					- cx = Math.round(Math.random() * 10000) / 100 + '%';
+					- cy = Math.round(Math.random() * 10000) / 100 + '%';
+					- r = Math.round((Math.random() + 0.5) * 10) / 10;
+					circle.star(cx=cx, cy=cy, r=r)
+		svg.extras(width="100%", height="100%", preserveAspectRatio="none")
+			defs
+				radialGradient#comet-gradient(, cx="0", cy=".5", r="0.5")
+					stop(offset="0%", stop-color="rgba(255,255,255,.8)")
+					stop(offset="100%", stop-color="rgba(255,255,255,0)")
+			g(transform="rotate(-135)")
+				ellipse.comet.comet-a(
+					fill="url(#comet-gradient)",
+					cx="0",
+					cy="0",
+					rx="150",
+					ry="2"
+				)
+			g(transform="rotate(20)")
+				ellipse.comet.comet-b(
+					fill="url(#comet-gradient)",
+					cx="100%",
+					cy="0",
+					rx="150",
+					ry="2"
+				)
+			g(transform="rotate(300)")
+				ellipse.comet.comet-c(
+					fill="url(#comet-gradient)",
+					cx="40%",
+					cy="100%",
+					rx="150",
+					ry="2"
+				)
+
+	//- Video background and main content
+	.main_content
+		.video_cover
+			img(src="https://i.ibb.co/XFbPrxX/Ellipse-compressed.png", alt="")
+			.video_container
+				video(
+					width="974",
+					src="https://dl.dropboxusercontent.com/s/vd0nxpmnhxt2dex/land10-compressed-3.mp4?",
+					height="480",
+					autoplay,
+					loop,
+					muted
+				)
+		.main_text_header
+			.main_text
+				h2 anabel
+			.shadow_under_hat
+				img(src="https://i.ibb.co/jhLGgkF/Ellipse-5-compressed.png", alt="")
+			.hat
+				img(src="https://i.ibb.co/KXBptpP/magician-hat.png", alt="magician hat")
+				.about_anabel
+					p Anabel, a young artist discovers her magical brush can bring paintings to life, thrusting her into an enchanting adventure to save a vibrant, imperiled world hidden within her art.
+					.watch_trailer_section
+						.play_button_section
+							img(src="https://i.ibb.co/NYHx3r9/play-icon.png", alt="")
+						a Watch Trailer
+					.paint_brush
+						img(
+							src="https://i.ibb.co/WtcP25r/brush-compressed.gif",
+							alt="paint brush"
+						)
+		.anabel_image
+			.ellipse_shadow
+			img(src="https://i.ibb.co/s27qhFv/annabel-compressed-1.png", alt="anabel")
+			.eye_gif
+				img(src="https://i.ibb.co/J3wmhJJ/magic-eye-compressed.gif", alt="")

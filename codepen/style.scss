@@ -1,0 +1,421 @@
+
+/*
+Hi there! :) 
+Thank you for checking out my code!
+
+Had to switch to raw HTML at some point cause
+I ran out of data because I was making too many requests
+on CodePen, meaning the code here is incomplete.
+
+Check the root folder for the main CSS Code. Thank you. <3
+*/
+:root {
+	--twinkle-duration: 4s;
+	--height-adjustment: 30rem;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Satoshi", sans-serif;
+}
+
+body {
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+main {
+	width: 100vw;
+	position: absolute;
+	height: calc(100vh + var(--height-adjustment));
+	animation: move-body 2.5s ease 2s forwards;
+	// top: calc(var(--height-adjustment) * -1);
+	// overflow: hidden;
+	// @keyframes move-body {
+	// 	0% {
+	// 		top: calc(var(--height-adjustment) * -1);
+	// 	}
+	// 	100% {
+	// 		top: 0;
+	// 	}
+	// }
+}
+// Navigation bar
+header {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 30px 10%;
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	background-color: none;
+}
+
+.logo {
+	margin-right: auto;
+	margin-left: -4rem;
+}
+
+.logo img {
+	width: 10rem;
+	height: auto;
+}
+.nav__links {
+	list-style: none;
+	display: flex;
+}
+
+.nav__links a,
+.cta,
+.overlay__content a {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+	color: #edf0f1;
+	text-decoration: none;
+}
+
+.nav__links li {
+	padding: 0px 20px;
+}
+
+.nav__links li a {
+	transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+	color: #0088a9;
+}
+
+.cta {
+	margin-left: 20px;
+	padding: 1rem 2rem;
+	background-image: linear-gradient(to bottom right, #4523b0, #6e8eff);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+}
+
+.cta:hover {
+	filter: brightness(50%);
+}
+
+/* Mobile Nav */
+
+.menu {
+	display: none;
+}
+
+.overlay {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 3;
+	right: 0;
+	top: 0;
+	background-color: #24252a;
+	overflow-x: hidden;
+	transition: all 0.5s ease 0s;
+}
+
+.overlay--active {
+	width: 100%;
+}
+
+.overlay__content {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.overlay a {
+	padding: 15px;
+	font-size: 36px;
+	display: block;
+	transition: all 0.3s ease 0s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+	color: #0088a9;
+}
+.overlay .close {
+	position: absolute;
+	top: 20px;
+	right: 45px;
+	font-size: 60px;
+	color: #edf0f1;
+	cursor: pointer;
+}
+
+// animated background wrapper
+.stars-wrapper {
+	position: absolute;
+	pointer-events: none;
+	width: 100vw;
+	height: calc(100vh + var(--height-adjustment));
+	background: linear-gradient(#16161d, #1f1f3a, #3b2f4a);
+	overflow: hidden;
+}
+
+.stars {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	animation: twinkle var(--twinkle-duration) ease-in-out infinite;
+	overflow: hidden;
+	&:nth-child(2) {
+		animation-delay: calc(var(--twinkle-duration) * -0.33);
+	}
+	&:nth-child(3) {
+		animation-delay: calc(var(--twinkle-duration) * -0.66);
+	}
+
+	@keyframes twinkle {
+		25% {
+			opacity: 0;
+		}
+	}
+}
+
+.star {
+	fill: white;
+
+	&:nth-child(3n) {
+		opacity: 0.8;
+	}
+	&:nth-child(7n) {
+		opacity: 0.6;
+	}
+	&:nth-child(13n) {
+		opacity: 0.4;
+	}
+	&:nth-child(19n) {
+		opacity: 0.2;
+	}
+}
+
+.comet {
+	transform-origin: center center;
+	animation: comet 10s linear infinite;
+
+	@keyframes comet {
+		0%,
+		40% {
+			transform: translateX(0);
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+		60%,
+		100% {
+			transform: translateX(-100vmax);
+			opacity: 0;
+		}
+	}
+}
+
+.comet-b {
+	animation-delay: -3.3s;
+}
+
+.comet-c {
+	animation-delay: -5s;
+}
+
+// main content
+.main_content {
+	display: grid;
+	position: relative;
+	grid-template-columns: 1fr;
+	grid-template-rows: minmax(31rem, auto) minmax(auto, 100%) auto;
+	align-items: end;
+	justify-items: center;
+	height: calc(100vh + var(--height-adjustment));
+	z-index: 1;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+.main_text_header {
+	position: relative;
+	display: flex;
+	align-self: end;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+	height: 16rem;
+	order: 2;
+}
+.main_text h2 {
+	font-family: "Montserrat", sans-serif;
+	font-size: 16rem;
+	background: rgba(255, 255, 255, 1);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.shadow_under_hat {
+	position: absolute;
+	top: 0.4rem;
+	right: 0.2rem;
+}
+.hat {
+	position: absolute;
+	top: -7rem;
+	right: -5rem;
+	z-index: -1;
+}
+.hat img {
+	width: 14rem;
+	height: auto;
+}
+
+/* about anabal section */
+/* 
+    This part gave me a headache.
+    Wasn't easy acheieving the frosted glass effect.
+    Thankfully, google helped :)
+*/
+.about_anabel {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	/* frosted glass effect used in design */
+	background-color: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(5px);
+	position: absolute;
+	color: white;
+	border-radius: 1.1rem;
+	padding: 2rem;
+	width: 25rem;
+	z-index: 4;
+	bottom: -17rem;
+	right: -4rem;
+	height: 16rem;
+	border: none;
+}
+
+.about_anabel p {
+	line-height: 1.7;
+	margin-bottom: 1rem;
+	font-weight: 300;
+}
+
+/* watch trailer sub section */
+.watch_trailer_section {
+	display: flex;
+	width: 16rem;
+	height: 5rem;
+	justify-content: start;
+	align-items: center;
+}
+
+.watch_trailer_section a {
+	margin-left: 1rem;
+	width: 45%;
+}
+
+.play_button_section img {
+	width: 4rem;
+	height: auto;
+}
+
+.play_button_section:hover {
+	cursor: pointer;
+	filter: brightness(130%);
+}
+.paint_brush {
+	position: absolute;
+	bottom: -3.3rem;
+	left: 6.6rem;
+}
+.paint_brush img {
+	width: 6rem;
+	height: auto;
+}
+/* video background */
+.video_cover {
+	position: absolute;
+	bottom: -8rem;
+}
+.video_cover .video_container {
+	overflow: hidden;
+	position: absolute;
+	z-index: 1;
+	width: 980px;
+	height: 580px;
+	left: 14.5rem;
+	opacity: 0.5;
+	border-radius: 50%;
+	bottom: -10rem;
+	right: 0;
+}
+video {
+	position: absolute;
+	width: 1186px;
+	height: 679px;
+	left: 0;
+	top: 0;
+}
+.video_cover img {
+	height: auto;
+}
+.anabel_image {
+	height: 37rem;
+	display: flex;
+	width: 100%;
+	position: relative;
+	align-self: end;
+	justify-content: center;
+	order: 3;
+}
+.anabel_image img {
+	height: auto;
+	position: absolute;
+	width: 35rem;
+	bottom: -3rem;
+	z-index: 2;
+	transition: all 0.2s ease;
+}
+/* animated eye */
+.eye_gif {
+	position: absolute;
+	right: 0;
+	bottom: 5rem;
+	width: 10rem;
+	height: auto;
+	z-index: 5;
+}
+.eye_gif img {
+	width: 10rem;
+	height: auto;
+}
+
+@media screen and (max-height: 450px) {
+	.overlay a {
+		font-size: 20px;
+	}
+	.overlay .close {
+		font-size: 40px;
+		top: 15px;
+		right: 35px;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.nav__links,
+	.cta {
+		display: none;
+	}
+	.menu {
+		display: initial;
+	}
+}
