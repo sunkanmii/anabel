@@ -282,6 +282,11 @@ a {
     order: 2;
 }
 
+.main_text {
+    display: inline-block;
+    width: 100%;
+}
+
 .main_text h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 16rem;
@@ -442,7 +447,7 @@ video {
 }
 
 /* loader */
-.loader_section{
+.loader_section {
     position: absolute;
     top: 0;
     left: 0;
@@ -452,6 +457,7 @@ video {
     background-color: rgba(255, 255, 255, .15);
     backdrop-filter: blur(60px);
 }
+
 #loader {
     position: absolute;
     left: 50%;
@@ -475,4 +481,32 @@ video {
     100% {
         -webkit-transform: rotate(360deg);
     }
+}
+
+@media only screen and (max-width: 45rem) {
+    .main_text h2 {
+        font-size: 4rem;
+    }
+
+    .about_anabel {
+        width: auto;
+        right: -4rem;
+    }
+
+    .shadow_under_hat {
+        top: 5.8rem;
+        right: -0.6rem;
+    }
+    .shadow_under_hat img{
+        width: 2rem;
+    }
+    .hat {
+        top: 3.2rem;
+        right: -2.2rem;
+    }
+
+    .hat img {
+        width: 5rem;
+    }
+
 }
